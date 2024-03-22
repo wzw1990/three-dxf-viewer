@@ -110,3 +110,9 @@ npm install
 npm run dev
 ```
 The application will be available on http://localhost:9009
+
+## docker开发
+```shell
+docker run --network host -v /Users/handsome/Workspaces/three-dxf-viewer:/app -it node bash
+apt update && apt install xdg-utils
+```
