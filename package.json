@@ -3,15 +3,14 @@
     "version": "1.0.35",
     "description": "DXF viewer using ThreeJS",
     "main": "dist/main.js",
-	"module": "dist/main.js",
-	"files": [ "dist/main.js", "dist/main.umb.cjs" ],
-	"type": "module",
+    "module": "dist/main.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-		"devr": "vite -c vite.dev.react.config.js --force",
-        "devv": "vite -c vite.dev.vue.config.js --force",
-		"dev": "vite -c vite.dev.config.js --force",
-		"build": "vite -c vite.prod.config.js build",
-		"page": "vite -c vite.page.config.js build",
+        "dev": "vite -c vite.dev.config.js --force",
+        "build": "vite -c vite.prod.config.js build",
+        "page": "vite -c vite.page.config.js build",
         "docs": "node jsdoc",
         "lint": "eslint --fix .",
         "prepare": "npm run build"
@@ -20,32 +19,26 @@
         "type": "git",
         "url": "git@github.com:ieskudero/three-dxf-viewer.git"
     },
-    "keywords": ["dxf", "three", "viewer"],
+    "keywords": [
+        "dxf",
+        "three",
+        "viewer"
+    ],
     "author": "Ibon Eskudero",
-    "license": "MIT",  
-	"bugs": {
-		"url": "https://github.com/ieskudero/three-dxf-viewer/issues"
-	  },
-	"homepage": "https://ieskudero.github.io/three-dxf-viewer/",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ieskudero/three-dxf-viewer/issues"
+    },
+    "homepage": "https://ieskudero.github.io/three-dxf-viewer/",
     "devDependencies": {
-		"vite": "6.0.3",
-		"vite-plugin-html": "3.2.2",
-		"vite-plugin-static-copy":"2.2.0",		
-        "jsdoc-to-markdown": "9.1.1",
-		"globals":"15.13.0",
-        "eslint": "9.16.0",
+        "eslint": "8.43.0",
         "eslint-config-recommended": "4.1.0",
-		"react": "19.0.0",
-		"react-dom": "19.0.0",
-		"@vitejs/plugin-react": "4.3.4",
-		"eslint-plugin-react": "7.37.2",
-		"@types/react": "19.0.1",
-		"@types/react-dom": "19.0.2",
-		"@babel/eslint-parser": "7.25.9",
-		"@babel/preset-react": "7.26.3",
-		"lil-gui": "0.20.0",
-        "vue": "3.5.13",
-        "@vitejs/plugin-vue": "5.2.1"
+        "eslint-plugin-import": "2.27.5",
+        "jsdoc-to-markdown": "8.0.0",
+        "lil-gui": "0.18.2",
+        "vite": "^4.5.2",
+        "vite-plugin-html": "3.2.0",
+        "vite-plugin-static-copy": "0.16.0"
     },
     "dependencies": {
         "dxf": "5.2.0",

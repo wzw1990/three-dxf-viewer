@@ -4,7 +4,7 @@ import { Boilerplate } from '../boilerplate.js';
 import './index.css';
 
 //global variables
-const font = 'fonts/helvetiker_regular.typeface.json';
+const font = 'fonts/FontAwesome_Regular.typeface.json';
 
 //init html
 let html = new Boilerplate();

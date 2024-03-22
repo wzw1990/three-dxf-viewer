@@ -8,6 +8,7 @@ export default defineConfig( {
 	root: './example/layer',
 	base: '',
 	server: {
+		host: '0.0.0.0',
 		port: 9009,
 		open: true,
 	},
@@ -40,8 +41,8 @@ export default defineConfig( {
 		viteStaticCopy( {
 			targets: [
 				{
-					src: '../fonts/helvetiker_regular.typeface.json',	//RELATIVE TO ROOT
-					dest: 'fonts'
+					src: '../fonts/FontAwesome_Regular.typeface.json',	//RELATIVE TO ROOT
+					dest: 'fonts/'
 				}
 			]
 		} )

@@ -44,7 +44,7 @@ export default defineConfig( {
 		viteStaticCopy( {
 			targets: [
 				{
-					src: '../fonts/helvetiker_regular.typeface.json',	//relative to root
+					src: '../fonts/FontAwesome_Regular.typeface.json',	//relative to root
 					dest: '../../../dist/fonts'
 				}
 			],
