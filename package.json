@@ -3,12 +3,14 @@
     "version": "1.0.27",
     "description": "DXF viewer using ThreeJS",
     "main": "dist/main.js",
-	"module": "dist/main.js",
-	"files": [ "dist" ],
+    "module": "dist/main.js",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-		"dev": "vite -c vite.dev.config.js --force",
-		"build": "vite -c vite.prod.config.js build",
-		"page": "vite -c vite.page.config.js build",
+        "dev": "vite -c vite.dev.config.js --force",
+        "build": "vite -c vite.prod.config.js build",
+        "page": "vite -c vite.page.config.js build",
         "docs": "node jsdoc",
         "lint": "eslint --fix --ext .js,.jsx ."
     },
@@ -16,22 +18,26 @@
         "type": "git",
         "url": "git@github.com:ieskudero/three-dxf-viewer.git"
     },
-    "keywords": ["dxf", "three", "viewer"],
+    "keywords": [
+        "dxf",
+        "three",
+        "viewer"
+    ],
     "author": "Ibon Eskudero",
-    "license": "MIT",  
-	"bugs": {
-		"url": "https://github.com/ieskudero/three-dxf-viewer/issues"
-	  },
-	"homepage": "https://ieskudero.github.io/three-dxf-viewer/",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ieskudero/three-dxf-viewer/issues"
+    },
+    "homepage": "https://ieskudero.github.io/three-dxf-viewer/",
     "devDependencies": {
-		"vite": "4.3.9",
-		"vite-plugin-html": "3.2.0",
-		"vite-plugin-static-copy":"0.16.0",		
-        "jsdoc-to-markdown": "8.0.0",
         "eslint": "8.43.0",
         "eslint-config-recommended": "4.1.0",
-		"eslint-plugin-import": "2.27.5",
-		"lil-gui": "0.18.2"
+        "eslint-plugin-import": "2.27.5",
+        "jsdoc-to-markdown": "8.0.0",
+        "lil-gui": "0.18.2",
+        "vite": "^4.5.2",
+        "vite-plugin-html": "3.2.0",
+        "vite-plugin-static-copy": "0.16.0"
     },
     "dependencies": {
         "dxf": "5.0.1",

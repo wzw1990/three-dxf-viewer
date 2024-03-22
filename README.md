@@ -25,7 +25,7 @@ To use it just initialize the main class and launch `getFromFile` or `getFromPat
 import { DXFViewer } from 'three-dxf-viewer';
 
 // Suppose we have a font in our application 
-let font = 'fonts/helvetiker_regular.typeface.json';
+let font = 'fonts/FontAwesome_Regular.typeface.json';
 
 // Suppose we have a file input and a loading div
 var file = event.target.files[0];

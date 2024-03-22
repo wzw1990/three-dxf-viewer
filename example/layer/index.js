@@ -8,7 +8,7 @@ import { Select } from '../../src/utils/select.js';
 import './index.css';
 
 //global variables
-const font = 'fonts/helvetiker_regular.typeface.json';
+const font = 'fonts/FontAwesome_Regular.typeface.json';
 let viewer = new DXFViewer();
 let snaps, gui;
 
