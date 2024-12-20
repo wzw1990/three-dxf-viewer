@@ -109,13 +109,16 @@ export class LineEntity extends BaseEntity {
 	}
 
 	_getPolyLinePoints( vertices, closed, extrusionZ = 1 ) {
-
+		let _vertices = vertices;
+		if( closed ) {
+			_vertices.push( _vertices[0] );
+		}
 		let points = [];
-		for ( let i = 0, il = vertices.length; i < il - 1; ++i ) {
+		for ( let i = 0, il = _vertices.length; i < il - 1; ++i ) {
 
-			let fromv = vertices[i];
-			let tov = vertices[i + 1];
-			let bulge = vertices[i].bulge;
+			let fromv = _vertices[i];
+			let tov = _vertices[i + 1];
+			let bulge = fromv.bulge;
 			let from = new Vector3( fromv.x, fromv.y, fromv.z );
 			let to = new Vector3( tov.x, tov.y, tov.z );
 
@@ -132,8 +135,6 @@ export class LineEntity extends BaseEntity {
 				points.push( to );
 			}
 		}
-
-		if( closed ) points.push( points[0] );
 
 		return points;
 	}
