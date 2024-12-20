@@ -1,7 +1,11 @@
 import { BaseEntity } from './baseEntity/baseEntity';
 import { Line,
+	Shape,
 	BufferGeometry,
+	ShapeGeometry,
+	MeshBasicMaterial,
 	Vector3, 
+	Mesh,
 	Group } from 'three';
 import { BufferAttribute } from 'three';
 import * as createArcoFromPolyline from 'dxf/lib/util/createArcForLWPolyline';
@@ -47,13 +51,37 @@ export class LineEntity extends BaseEntity {
 				this._setCache( entity, _drawData );
 			}
 
-			//create mesh
-			let mesh = new Line( geometry, material );
-			if( material.type === 'LineDashedMaterial' ) this._geometryHelper.fixMeshToDrawDashedLines( mesh );
-			mesh.userData = { entity: entity };
+			let mesh;
+			if (entity.layer == "item_chair" || entity.layer == "item_desk") {
+				const positionAttribute = geometry.getAttribute("position");
+				const shape = new Shape();
+				for (let i = 0; i < positionAttribute.count; i++) {
+				const x = positionAttribute.getX(i);
+				const y = positionAttribute.getY(i);
 
+				if (i === 0) {
+					shape.moveTo(x, y);
+				} else {
+					shape.lineTo(x, y);
+				}
+				}
+				// 将形状闭合
+				shape.closePath();
+				const shapeGeometry = new ShapeGeometry(shape);
+				shapeGeometry.userData = { entity: entity };
+				const meshMaterial = new MeshBasicMaterial({ visible: true });
+				mesh = new Mesh(shapeGeometry, meshMaterial);
+			} else {
+				//create mesh
+				let line = new Line(geometry, material);
+				if (material.type === "LineDashedMaterial") this._geometryHelper.fixMeshToDrawDashedLines(line);
+				line.userData = { entity: entity };
+				const meshMaterial = new MeshBasicMaterial({ visible: false });
+				mesh = new Mesh(geometry, meshMaterial);
+				mesh.add(line);
+			}
 			//add to group
-			group.add( mesh );
+			group.add(mesh);
 		}
 
 		return group;

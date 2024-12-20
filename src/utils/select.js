@@ -81,12 +81,12 @@ export class Select extends Raycaster {
 			this.pointer.x = ( x / this.container.clientWidth ) * 2 - 1;
 			this.pointer.y = - ( y / this.container.clientHeight ) * 2 + 1;
 			
-			const intersected = await this.raycast.raycast( this.pointer );
-			if( intersected )  ss = intersected.object.parent;
+			const intersects = await this.raycast.raycast( this.pointer );
+			if( intersects )  ss = intersects;
 		}
 
 		if( ss ) {
-			this.select( ss );
+			this.select( ss.map((s) => s.object) );
 			await this.trigger( 'select', ss );
 		}
 

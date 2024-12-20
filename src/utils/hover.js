@@ -28,12 +28,12 @@ export class Hover extends Raycaster {
 		this.pointer.x = ( x / this.container.clientWidth ) * 2 - 1;
 		this.pointer.y = - ( y / this.container.clientHeight ) * 2 + 1;
 		
-		const intersected = this.raycast.raycast( this.pointer );
+		const intersects = await this.raycast.raycast( this.pointer );
 
 		this.removeHover();
-		if( intersected )  {
-			const obj = intersected.object.parent;
-			if( !obj.userData ) return;
+		if( intersects )  {
+			const obj = intersects[0]?.object;
+			if( !obj?.userData ) return;
 
 			this.hover( obj );			
 			await this.trigger( 'hover', obj );

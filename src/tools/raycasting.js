@@ -22,9 +22,7 @@ export class Raycasting {
 		
 		this.raycaster.setFromCamera( pointer, this.camera );
 
-		const intersects = this.raycaster.intersectObjects( this.targets, true );
-
-		return intersects.length === 0 ? null : intersects[0];
+		return this.raycaster.intersectObjects( this.targets, true );
 	}
 
 	_calculateThreshold() {
