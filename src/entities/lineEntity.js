@@ -4,6 +4,9 @@ import { Line,
 	BufferGeometry,
 	ShapeGeometry,
 	MeshBasicMaterial,
+	EdgesGeometry,
+	LineBasicMaterial,
+	LineSegments,
 	Vector3, 
 	Mesh,
 	Group } from 'three';
@@ -51,7 +54,6 @@ export class LineEntity extends BaseEntity {
 				this._setCache( entity, _drawData );
 			}
 
-			let mesh;
 			if (entity.layer == "item_chair" || entity.layer == "item_desk") {
 				const positionAttribute = geometry.getAttribute("position");
 				const shape = new Shape();
@@ -70,18 +72,25 @@ export class LineEntity extends BaseEntity {
 				const shapeGeometry = new ShapeGeometry(shape);
 				shapeGeometry.userData = { entity: entity };
 				const meshMaterial = new MeshBasicMaterial({ visible: true });
-				mesh = new Mesh(shapeGeometry, meshMaterial);
+				let mesh = new Mesh(shapeGeometry, meshMaterial);
+				group.add(mesh);
+				
+				// 使用 EdgesGeometry 创建边框
+				const edges = new EdgesGeometry(shapeGeometry);
+				const edgeMaterial = new LineBasicMaterial({ color: 0x000000 });
+				const edgeLines = new LineSegments(edges, edgeMaterial);
+				group.add(edgeLines);
 			} else {
 				//create mesh
 				let line = new Line(geometry, material);
 				if (material.type === "LineDashedMaterial") this._geometryHelper.fixMeshToDrawDashedLines(line);
 				line.userData = { entity: entity };
 				const meshMaterial = new MeshBasicMaterial({ visible: false });
-				mesh = new Mesh(geometry, meshMaterial);
+				let mesh = new Mesh(geometry, meshMaterial);
 				mesh.add(line);
+
+				group.add(mesh);
 			}
-			//add to group
-			group.add(mesh);
 		}
 
 		return group;
