@@ -92,7 +92,9 @@ export class TextEntity extends BaseEntity {
             
 		//get material
 		let material = this._colorHelper.getMaterial( entity, 'shape', this.data.tables );
-
+		material.depthTest = false;
+		material.transparent = true;
+		material.opacity = 1.0;
 		return { geometry: geometry, material: material };
 	}
 
