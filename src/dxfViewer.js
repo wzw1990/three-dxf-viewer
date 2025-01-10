@@ -14,7 +14,6 @@ import * as Helper from 'dxf/src/Helper';
 import { Properties } from './entities/baseEntity/properties';
 import { LayerHelper } from './entities/baseEntity/layerHelper.js';
 import { ColorHelper } from './entities/baseEntity/colorHelper.js';
-import { UNITS } from './entities/baseEntity/eUnit.js';
 
 /**
  * @class DXFViewer
@@ -28,8 +27,6 @@ export class DXFViewer {
 
 		this._cache = {};
 		this.useCache = true;
-
-		this.onBeforeTextChanged = null;
 
 		this.colorHelper = new ColorHelper();
 		this.LayerHelper = new LayerHelper();
@@ -88,8 +85,7 @@ export class DXFViewer {
 			this.layers = data.tables.layers;
 
 			//export global unit
-			const toEnum = v => Object.keys( UNITS ).find( key => UNITS[key] === v );
-			this.unit = data.header ? toEnum( data.header.insUnits ) : 0;
+			this.unit = data.header ? data.header.insUnits : 0;
 
 			//return draw
 			resolve( await this._drawDXF( data ) );
